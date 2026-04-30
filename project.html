@@ -31,18 +31,27 @@
         }
 
         .project-gallery {
-            display: flex;
-            flex-direction: column;
-            gap: 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
             margin-top: 4rem;
         }
 
         .project-gallery img {
             width: 100%;
+            height: auto;
+            aspect-ratio: 4/3;
+            object-fit: cover;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             background-color: var(--bg-contrast);
-            min-height: 200px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        .project-gallery img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
         .error-message {
@@ -161,8 +170,7 @@
                     // Fallback for broken images
                     img.onerror = function() {
                         this.onerror = null; // prevent infinite loop
-                        this.src = 'profile.jpeg'; // use an existing image as placeholder if needed, or hide it
-                        this.style.opacity = '0.5';
+                        this.style.display = 'none'; // Hide broken images instead of showing profile picture
                     };
                     
                     gallery.appendChild(img);
