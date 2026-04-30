@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Hari Haran</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-header {
+            padding: 120px 0 4rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            margin-bottom: 4rem;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+        }
+
+        .project-meta-item {
+            margin-bottom: 2rem;
+        }
+
+        .project-meta-item h4 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .project-gallery img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            background-color: var(--bg-contrast);
+            min-height: 200px;
+        }
+
+        .error-message {
+            text-align: center;
+            padding: 150px 20px;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 1024px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Hari Haran.</a>
+            <div class="nav-links">
+                <a href="index.html">Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Fallback / Loading State -->
+    <div id="fallback-container" class="container fade-in">
+        <div class="error-message" id="fallback-message">
+            Project content is loading or unavailable.
+        </div>
+        <div style="text-align: center; margin-bottom: 6rem;">
+            <a href="index.html#work" class="btn btn-primary">Return to Portfolio</a>
+        </div>
+    </div>
+
+    <!-- Dynamic Content Container -->
+    <div id="project-container" class="container fade-in" style="display: none;">
+        <div class="project-header">
+            <span id="p-category" class="work-category" style="display: block; margin-bottom: 1rem;"></span>
+            <h1 id="p-title" style="font-size: clamp(3rem, 6vw, 5rem);"></h1>
+        </div>
+
+        <div class="project-grid">
+            <div class="project-info">
+                <div class="project-meta-item">
+                    <h4>Context</h4>
+                    <p id="p-context" style="font-size: 1rem; color: var(--text-primary);"></p>
+                </div>
+                <div class="project-meta-item">
+                    <h4>My Role</h4>
+                    <p id="p-role" style="font-size: 1rem; color: var(--text-primary);"></p>
+                </div>
+                <div class="project-meta-item">
+                    <h4>Tools Used</h4>
+                    <p id="p-tools" style="font-size: 1rem; color: var(--text-primary);"></p>
+                </div>
+            </div>
+
+            <div class="project-story">
+                <h3 style="margin-bottom: 1rem;">The Approach</h3>
+                <p id="p-approach"></p>
+            </div>
+        </div>
+
+        <div class="project-gallery" id="p-gallery">
+            <!-- Images injected here -->
+        </div>
+
+        <div style="text-align: center; margin: 6rem 0;">
+            <a href="index.html#work" class="btn btn-link" style="font-size: 1.2rem; font-weight: 700; font-family: var(--font-heading);">&larr; Back to Works</a>
+        </div>
+    </div>
+
+    <!-- Data script -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = urlParams.get('id');
+
+            const fallbackContainer = document.getElementById('fallback-container');
+            const projectContainer = document.getElementById('project-container');
+            const fallbackMessage = document.getElementById('fallback-message');
+
+            if (!projectId || !projectsData || !projectsData[projectId]) {
+                fallbackMessage.textContent = "Project details not found.";
+                fallbackContainer.style.display = 'block';
+                projectContainer.style.display = 'none';
+                return;
+            }
+
+            const data = projectsData[projectId];
+
+            // Render text data
+            document.title = data.title + " | Hari Haran";
+            document.getElementById('p-category').textContent = data.category;
+            document.getElementById('p-title').textContent = data.title;
+            document.getElementById('p-context').textContent = data.context;
+            document.getElementById('p-role').textContent = data.role;
+            document.getElementById('p-tools').textContent = data.tools;
+            document.getElementById('p-approach').textContent = data.approach;
+
+            // Render images
+            const gallery = document.getElementById('p-gallery');
+            gallery.innerHTML = '';
+            
+            if (data.images && data.images.length > 0) {
+                data.images.forEach(src => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = data.title + " Design";
+                    
+                    // Fallback for broken images
+                    img.onerror = function() {
+                        this.onerror = null; // prevent infinite loop
+                        this.src = 'profile.jpeg'; // use an existing image as placeholder if needed, or hide it
+                        this.style.opacity = '0.5';
+                    };
+                    
+                    gallery.appendChild(img);
+                });
+            } else {
+                gallery.innerHTML = '<p style="text-align:center; color:var(--text-secondary);">No images available for this project.</p>';
+            }
+
+            // Switch visibility
+            fallbackContainer.style.display = 'none';
+            projectContainer.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

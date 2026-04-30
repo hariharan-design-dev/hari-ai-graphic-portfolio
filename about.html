@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Graphic Designer</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-header {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .skills-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .skills-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .skills-list li::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            margin-right: 1rem;
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background: var(--bg-contrast);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .tool-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255,77,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .about-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">DESIGNER.AI</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html" class="active">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Header -->
+    <section class="about-header">
+        <div class="hero-bg-glow" style="top: 30%; left: 30%;"></div>
+        <div class="container fade-in">
+            <div class="about-layout">
+                <div>
+                    <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 2rem;">The Story Behind the Systems</h1>
+                    <p style="font-size: 1.2rem; color: var(--text-primary); margin-bottom: 1.5rem;">I am a graphic designer obsessed with the intersection of human creativity and machine intelligence.</p>
+                    <p>My journey began in traditional graphic design, but I quickly realized that AI was not a threat—it was a supercharger. I pivoted my focus toward building structured design workflows using advanced prompt engineering. This approach allows me to bypass the slow rendering phases of design and focus entirely on art direction, system architecture, and brand narrative.</p>
+                    <p>Today, I help brands scale their visual identities faster and more cohesively than ever before.</p>
+                </div>
+                <div style="position: relative;">
+                    <img src="profile.png" alt="Abstract Profile" style="width: 100%; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Tools -->
+    <section class="section-contrast" style="padding-bottom: 8rem;">
+        <div class="container fade-in">
+            <div class="about-layout">
+                <!-- Skills -->
+                <div>
+                    <h2 style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem;">Core Capabilities</h2>
+                    <ul class="skills-list">
+                        <li>AI-Powered Concept Generation</li>
+                        <li>Advanced Prompt Engineering</li>
+                        <li>Brand Identity & Systems</li>
+                        <li>UI/UX Visual Design</li>
+                        <li>Digital & Product Visuals</li>
+                        <li>Social Media Marketing Design</li>
+                    </ul>
+                </div>
+                
+                <!-- Tools -->
+                <div>
+                    <h2 style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem;">My Toolkit</h2>
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <h4 style="color: var(--text-primary);">Figma</h4>
+                        </div>
+                        <div class="tool-card">
+                            <h4 style="color: var(--text-primary);">ChatGPT</h4>
+                        </div>
+                        <div class="tool-card">
+                            <h4 style="color: var(--text-primary);">Google Whisk</h4>
+                        </div>
+                        <div class="tool-card">
+                            <h4 style="color: var(--text-primary);">Midjourney</h4>
+                        </div>
+                        <div class="tool-card">
+                            <h4 style="color: var(--text-primary);">Photoshop</h4>
+                        </div>
+                        <div class="tool-card">
+                            <h4 style="color: var(--text-primary);">Illustrator</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
