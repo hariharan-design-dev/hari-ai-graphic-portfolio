@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIPZY | Premium Beverage Branding Case Study</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        :root {
+            --bg: #050505;
+            --panel: #0b0b0b;
+            --text: #ffffff;
+            --text-body: #f1f1f1;
+            --text-muted: #cfcfcf;
+            --line: rgba(255, 255, 255, 0.12);
+            --orange: #ff7a1a;
+            --section-space: 120px;
+            --section-space-md: 90px;
+            --section-space-sm: 60px;
+            --gap-lg: 48px;
+            --gap-md: 32px;
+            --gap-sm: 24px;
+            --radius: 18px;
+            --container: min(1180px, 88vw);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            font-family: Inter, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 20% 10%, rgba(255, 122, 26, 0.12), transparent 28%),
+                radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.05), transparent 28%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 45%);
+            z-index: -1;
+        }
+
+        nav {
+            background: rgba(5, 5, 5, 0.9) !important;
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .container.nav-container {
+            width: min(1180px, 90vw);
+            margin: 0 auto;
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: #fff !important;
+            font-family: Outfit, Inter, sans-serif;
+            font-weight: 900;
+            text-decoration: none;
+            letter-spacing: -0.03em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff !important;
+            opacity: 0.86;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        .sipzy-page {
+            background: #050505;
+        }
+
+        .section {
+            width: var(--container);
+            margin: var(--section-space) auto 0;
+        }
+
+        .section-tight {
+            width: var(--container);
+            margin: 100px auto 0;
+        }
+
+        .section-header {
+            max-width: 760px;
+            margin-bottom: 48px;
+        }
+
+        .label {
+            display: inline-block;
+            margin-bottom: 18px;
+            color: #ffffff;
+            opacity: 0.78;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.34em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: Outfit, Inter, sans-serif;
+            color: #ffffff;
+            margin: 0;
+            letter-spacing: -0.04em;
+        }
+
+        h1 {
+            font-size: clamp(4.2rem, 11vw, 10rem);
+            line-height: 0.82;
+            font-weight: 950;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: clamp(2.2rem, 5vw, 5rem);
+            line-height: 0.98;
+            font-weight: 850;
+            margin-bottom: 24px;
+        }
+
+        h3 {
+            font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+            line-height: 1.1;
+            font-weight: 760;
+            margin-bottom: 18px;
+        }
+
+        p {
+            color: var(--text-body);
+            font-size: clamp(1rem, 1.3vw, 1.12rem);
+            line-height: 1.85;
+            margin: 0 0 18px;
+            max-width: 700px;
+        }
+
+        .lead {
+            color: #ffffff;
+            font-size: clamp(1.08rem, 1.6vw, 1.42rem);
+            line-height: 1.65;
+            max-width: 760px;
+        }
+
+        .muted {
+            color: var(--text-muted);
+        }
+
+        .img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: var(--radius);
+            background: #090909;
+            box-shadow: 0 28px 90px rgba(0, 0, 0, 0.48);
+        }
+
+        .image-frame {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: #090909;
+        }
+
+        .image-frame .img {
+            border: none;
+            box-shadow: none;
+            transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .caption {
+            margin-top: 14px;
+            color: #ffffff;
+            opacity: 0.82;
+            font-size: 0.86rem;
+            line-height: 1.55;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--gap-lg);
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--gap-md);
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 90vh;
+            margin-top: 72px; /* Offset for nav */
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background: #050505;
+        }
+
+        .hero-img {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.7) 60%, rgba(0, 0, 0, 0.9) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            width: min(1180px, 90vw);
+            margin: 0 auto;
+            padding: 0 5% 0 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .hero-copy {
+            width: min(560px, 100%);
+            text-align: left;
+        }
+
+        .hero-copy h1 {
+            color: #ffffff;
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            margin-bottom: 22px;
+        }
+
+        .hero-copy .sub {
+            color: #ffffff;
+            font-size: clamp(1.35rem, 2.5vw, 2.4rem);
+            line-height: 1.12;
+            font-weight: 750;
+            letter-spacing: -0.04em;
+            margin-bottom: 22px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 26px;
+        }
+
+        .tag {
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 999px;
+            padding: 9px 13px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        /* Layout specifics */
+        .moodboard-wrap {
+            width: 85%;
+            margin: 0 auto;
+        }
+
+        .flavor-layout {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: var(--gap-lg);
+        }
+
+        .flavor-stack {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-md);
+        }
+
+        .bottle-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 160px;
+        }
+
+        .bottle-row {
+            display: flex;
+            align-items: center;
+            gap: var(--gap-lg);
+        }
+
+        .bottle-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .bottle-visual {
+            width: 40%;
+        }
+
+        .bottle-row h3 {
+            font-size: clamp(2rem, 3vw, 3rem);
+            margin-bottom: 16px;
+        }
+
+        .macro-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--gap-md);
+        }
+
+        .divider {
+            width: 100%;
+            margin: 200px 0;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .divider img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 16/3;
+        }
+
+        .divider-copy {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.34));
+        }
+
+        .divider-copy h2 {
+            display: none; /* Removed as requested to reduce clutter */
+        }
+
+        .campaign-pair {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: var(--gap-lg);
+            align-items: center;
+        }
+
+        .square-showcase {
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        .medium-showcase {
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        .retail-showcase {
+            width: 100%;
+        }
+
+        .lifestyle-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--gap-lg);
+            align-items: center;
+        }
+
+        .lifestyle-grid .stagger {
+            margin-top: 120px;
+        }
+
+        .triptych-wrap {
+            margin-top: 60px;
+        }
+
+        .final-copy {
+            text-align: center;
+            margin: 70px auto 0;
+            max-width: 780px;
+        }
+
+        .closing {
+            padding: 130px 0;
+            border-top: 1px solid var(--line);
+            text-align: center;
+        }
+
+        .closing h2 {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .closing p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 34px;
+            margin-top: 44px;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.82rem;
+            letter-spacing: 0.14em;
+            opacity: 0.78;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* ── Image Hover Interaction ── */
+        .image-frame {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s ease;
+        }
+        .image-frame:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+        }
+        .image-frame .img {
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .image-frame:hover .img {
+            transform: scale(1.02);
+            filter: brightness(1.05);
+        }
+
+        /* ── Scroll Reveal System ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+        }
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+        }
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.96);
+            filter: blur(4px);
+            transition: opacity 1.2s cubic-bezier(0.16,1,0.3,1), transform 1.2s cubic-bezier(0.16,1,0.3,1), filter 1.2s cubic-bezier(0.16,1,0.3,1);
+        }
+        .reveal-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+            filter: blur(0px);
+        }
+
+        /* Stagger delays for grid children */
+        .stagger-children > *:nth-child(1) { transition-delay: 0s; }
+        .stagger-children > *:nth-child(2) { transition-delay: 0.12s; }
+        .stagger-children > *:nth-child(3) { transition-delay: 0.24s; }
+        .stagger-children > *:nth-child(4) { transition-delay: 0.36s; }
+
+        /* ── Parallax Divider ── */
+        .divider-parallax {
+            position: relative;
+            overflow: hidden;
+        }
+        .divider-parallax img {
+            transition: transform 0.1s linear;
+            will-change: transform;
+        }
+
+        /* ── Logo showcase ── */
+        .logo-showcase {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--gap-lg);
+            align-items: center;
+        }
+        .logo-showcase .image-frame {
+            background: #0d0d0d;
+            padding: 40px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-showcase .img {
+            max-height: 220px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* ── Story Ad ── */
+        .story-ad-layout {
+            display: grid;
+            grid-template-columns: 0.4fr 0.6fr;
+            gap: var(--gap-lg);
+            align-items: center;
+        }
+        .story-ad-visual {
+            max-width: 340px;
+            justify-self: center;
+        }
+
+        /* Removed forced aspect ratios */
+
+        @media (max-width: 1024px) {
+            .hero {
+                height: 70vh;
+            }
+
+            .hero::after {
+                background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.9) 100%);
+            }
+            .hero-content {
+                justify-content: center;
+                padding: 0;
+            }
+            .hero-copy {
+                text-align: center;
+                width: 80%;
+            }
+
+            .moodboard-wrap {
+                width: 92%;
+            }
+
+            .bottle-visual {
+                width: 70%;
+            }
+
+            .bottle-showcase {
+                gap: 80px;
+            }
+
+            .bottle-row {
+                flex-direction: column !important;
+                text-align: center;
+            }
+
+            .square-showcase {
+                width: 70%;
+            }
+
+            .medium-showcase {
+                width: 76%;
+            }
+
+            .divider {
+                margin: 120px 0;
+            }
+        }
+
+        @media (max-width: 700px) {
+            :root {
+                --section-space: var(--section-space-sm);
+                --gap-lg: var(--gap-sm);
+                --gap-md: var(--gap-sm);
+                --container: 92vw;
+            }
+
+            .container.nav-container {
+                min-height: 64px;
+            }
+
+            .nav-links {
+                gap: 14px;
+            }
+
+            .nav-links a {
+                font-size: 0.78rem;
+            }
+
+        @media (max-width: 700px) {
+            .hero {
+                height: 60vh;
+            }
+
+            .hero-copy {
+                width: 100%;
+            }
+
+            .moodboard-wrap {
+                width: 95%;
+            }
+
+            .flavor-layout,
+            .campaign-pair,
+            .lifestyle-grid,
+            .macro-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .bottle-visual,
+            .square-showcase,
+            .medium-showcase {
+                width: 100%;
+            }
+
+            .divider {
+                margin: 80px 0;
+            }
+
+            .divider-copy h2 {
+                font-size: clamp(1.6rem, 8vw, 3rem);
+            }
+
+            .lifestyle-grid .stagger {
+                margin-top: 0;
+            }
+        }
+
+            .moodboard-wrap {
+                width: 95%;
+            }
+
+            .grid-3,
+            .macro-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .story-ad-visual {
+                max-width: 260px;
+            }
+
+            .bottle-visual,
+            .square-showcase,
+            .medium-showcase {
+                width: 100%;
+            }
+
+            .divider {
+                margin: 60px 0;
+            }
+
+            .divider-copy h2 {
+                font-size: clamp(1.6rem, 8vw, 3rem);
+            }
+
+            .section-header {
+                margin-bottom: 30px;
+            }
+
+            p {
+                line-height: 1.72;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Hari Haran.</a>
+            <div class="nav-links">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#work">Work</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="https://updated-ui-ux-portfolio.vercel.app/" target="_blank">UI/UX Portfolio</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="sipzy-page">
+
+        <!-- 01 HERO SECTION -->
+        <header class="hero">
+            <div class="hero-img">
+                <img src="graphic design projects/SIPZY/13_case_study_assets/hero_sections.png"
+                    alt="SIPZY cinematic beverage brand hero section">
+            </div>
+
+            <div class="hero-content">
+                <div class="hero-copy reveal">
+                    <span class="label">Brand Experience / Product Design / Visual Storytelling</span>
+                    <h1>SIPZY</h1>
+                    <div class="sub">A Cinematic Beverage Brand Built For The Digital Generation</div>
+                    <p>SIPZY is a premium branding concept built around bold flavor worlds, cinematic packaging, and commercial-ready campaign storytelling.</p>
+
+                    <div class="tags">
+                        <span class="tag">Brand Identity</span>
+                        <span class="tag">Packaging</span>
+                        <span class="tag">Campaign Design</span>
+                        <span class="tag">Art Direction</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 02 BRAND MOODBOARD -->
+        <section class="section">
+            <div class="section-header reveal">
+                <span class="label">01 Foundation</span>
+                <h2>Defining The Visual Taste</h2>
+                <p class="lead">The brand direction starts with a high-energy visual language: bold colors, juicy product cues, and a playful premium beverage mood.</p>
+            </div>
+
+            <div class="moodboard-wrap reveal-scale">
+                <div class="image-frame">
+                    <img class="img"
+                        src="graphic design projects/SIPZY/00_brand_foundation/moodboard/sipzy_brand_moodboard.png"
+                        alt="SIPZY brand moodboard">
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 FLAVOR WORLDS -->
+        <section class="section">
+            <div class="section-header reveal">
+                <span class="label">02 Visual Worlds</span>
+                <h2>Building Atmosphere Through Flavor</h2>
+                <p class="lead">Each SIPZY flavor is treated as its own cinematic world, carrying distinct color energy and product mood while remaining connected to the core brand universe.</p>
+            </div>
+
+            <div class="flavor-layout reveal-scale">
+                <div class="image-frame">
+                    <img class="img"
+                        src="graphic design projects/SIPZY/01_flavor_worlds/sipzy_orange_flavor_world.png"
+                        alt="SIPZY orange flavor world">
+                </div>
+
+                <div class="flavor-stack">
+                    <div class="image-frame">
+                        <img class="img"
+                            src="graphic design projects/SIPZY/01_flavor_worlds/sipzy_strawberry_flavor_world.png"
+                            alt="SIPZY strawberry flavor world">
+                    </div>
+                    <div class="image-frame">
+                        <img class="img"
+                            src="graphic design projects/SIPZY/01_flavor_worlds/sipzy_choco_flavor_world.png"
+                            alt="SIPZY choco flavor world">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 PACKAGING HERO VISUALS -->
+        <section class="section">
+            <div class="section-header reveal">
+                <span class="label">03 Packaging</span>
+                <h2>Designed To Feel Beyond The Bottle</h2>
+                <p class="lead">Packaging visuals focus on strong product identity and advertising-grade lighting, elevating the structural design into a high-end commercial piece.</p>
+            </div>
+
+            <div class="bottle-showcase">
+                <div class="bottle-row reveal-left">
+                    <div class="bottle-visual image-frame">
+                        <img class="img"
+                            src="graphic design projects/SIPZY/02_packaging_hero_visuals/sipzy_orange_hero_bottle.png"
+                            alt="SIPZY orange hero bottle packaging">
+                    </div>
+                    <div>
+                        <h3>Orange Blast</h3>
+                        <p>The primary flavor drives the most energetic brand tone with warm commercial lighting and a clear bottle-first presentation.</p>
+                    </div>
+                </div>
+
+                <div class="bottle-row reverse reveal-right">
+                    <div class="bottle-visual image-frame">
+                        <img class="img"
+                            src="graphic design projects/SIPZY/02_packaging_hero_visuals/sipzy_strawberry_hero_bottle.png"
+                            alt="SIPZY strawberry hero bottle packaging">
+                    </div>
+                    <div>
+                        <h3>Strawberry Rush</h3>
+                        <p>A softer but equally vibrant direction that expands the visual system while maintaining strict packaging hierarchy.</p>
+                    </div>
+                </div>
+
+                <div class="bottle-row reveal-left">
+                    <div class="bottle-visual image-frame">
+                        <img class="img"
+                            src="graphic design projects/SIPZY/02_packaging_hero_visuals/sipzy_choco_hero_bottle.png"
+                            alt="SIPZY choco hero bottle packaging">
+                    </div>
+                    <div>
+                        <h3>Choco Drift</h3>
+                        <p>A richer visual mood that balances playful beverage identity with a premium, dessert-inspired aesthetic.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 MACRO CLOSEUPS -->
+        <section class="section">
+            <div class="section-header reveal">
+                <span class="label">04 Details</span>
+                <h2>Sensory Detail And Tactile Depth</h2>
+                <p class="lead">Macro compositions draw the viewer closer to the product, revealing texture and lighting details that make the flavor worlds feel tangible.</p>
+            </div>
+
+            <div class="macro-strip reveal-scale">
+                <div class="image-frame">
+                    <img class="img"
+                        src="graphic design projects/SIPZY/03_macro_closeups/sipzy_orange_macro_closeup.png"
+                        alt="SIPZY orange macro closeup">
+                </div>
+                <div class="image-frame">
+                    <img class="img"
+                        src="graphic design projects/SIPZY/03_macro_closeups/sipzy_strawberry_macro_closeup.png"
+                        alt="SIPZY strawberry macro closeup">
+                </div>
+                <div class="image-frame">
+                    <img class="img" src="graphic design projects/SIPZY/03_macro_closeups/sipzy_choco_macro_closeup.png"
+                        alt="SIPZY choco macro closeup">
+                </div>
+            </div>
+        </section>
+
+        <!-- 06 CAMPAIGN ECOSYSTEM DIVIDER -->
+        <section class="divider divider-parallax reveal-scale">
+            <img src="graphic design projects/SIPZY/13_case_study_assets/section_dividers/ChatGPT Image May 11, 2026, 07_11_03 PM.png"
+                alt="SIPZY campaign ecosystem divider">
+            <div class="divider-copy">
+                <h2>Scaling The Brand Ecosystem</h2>
+            </div>
+        </section>
+
+        <!-- 07 & 08 BILLBOARD + BUS SHELTER -->
+        <section class="section">
+            <div class="section-header reveal">
+                <span class="label">05 Campaign</span>
+                <h2>Building A Brand Beyond The Shelf</h2>
+                <p class="lead">Large-format outdoor placements test the system's scalability, proving the identity remains bold and memorable in real-world environments.</p>
+            </div>
+
+            <div class="campaign-pair reveal-scale">
+                <div class="image-frame">
+                    <img class="img"
+                        src="graphic design projects/SIPZY/04_billboard_campaign/sipzy_billboard_campaign.png"
+                        alt="SIPZY billboard campaign">
+                </div>
+                <div class="image-frame">
+                    <img class="img"
+                        src="graphic design projects/SIPZY/05_bus_shelter_campaign/sipzy_bus_shelter_campaign.png"
+                        alt="SIPZY bus shelter campaign">
+                </div>
+            </div>
+        </section>
+
+        <!-- 09 INSTAGRAM CAMPAIGN GRID -->
+        <section class="section">
+            <div class="section-header reveal">
+                <span class="label">06 Digital</span>
+                <h2>Curating The Digital Energy</h2>
+                <p class="lead">The campaign grid demonstrates how SIPZY maintains strong recognition inside a fast-scrolling feed without losing its cinematic editorial feel.</p>
+            </div>
+
+            <div class="square-showcase reveal-scale">
+                <div class="image-frame">
+                    <img class="img"
+                        src="graphic design projects/SIPZY/06_instagram_campaign_grid/sipzy_instagram_campaign_grid.png"
+                        alt="SIPZY Instagram campaign grid">
+                </div>
+            </div>
+        </section>
+
+        <!-- 10 & 11 RETAIL + VENDING -->
+        <section class="section">
+            <div class="section-header reveal">
+                <span class="label">07 Activation</span>
+                <h2>Where The Brand Meets Reality</h2>
+                <p class="lead">Retail and vending concepts move the case study beyond isolated mockups, visualizing the brand in purchase-driven commercial spaces.</p>
+            </div>
+
+            <div class="retail-showcase image-frame reveal-scale" style="margin-bottom: var(--gap-lg);">
+                <img class="img"
+                    src="graphic design projects/SIPZY/08_retail_shelf_display/sipzy_retail_shelf_display.png"
+                    alt="SIPZY retail shelf display">
+            </div>
+
+            <div class="medium-showcase image-frame reveal-scale">
+                <img class="img"
+                    src="graphic design projects/SIPZY/09_vending_machine_campaign/sipzy_vending_machine_campaign.png"
+                    alt="SIPZY vending machine campaign">
+            </div>
+        </section>
+
+        <!-- 12 LIFESTYLE CAMPAIGN DIVIDER -->
+        <section class="divider divider-parallax reveal-scale">
+            <img src="graphic design projects/SIPZY/13_case_study_assets/section_dividers/ChatGPT Image May 11, 2026, 07_11_19 PM.png"
+                alt="SIPZY lifestyle campaign divider">
+            <div class="divider-copy">
+                <h2>Connecting Product To People</h2>
+            </div>
+        </section>
+
+        <!-- 13 LIFESTYLE CAMPAIGNS -->
+        <section class="section">
+            <div class="section-header reveal">
+                <span class="label">08 Lifestyle</span>
+                <h2>Turning Product Energy Into Lifestyle</h2>
+                <p class="lead">Lifestyle photography brings the product into authentic human moments, making the brand feel relatable, expressive, and culturally grounded.</p>
+            </div>
+
+            <div class="lifestyle-grid">
+                <div class="reveal-left">
+                    <div class="image-frame">
+                        <img class="img"
+                            src="graphic design projects/SIPZY/10_lifestyle_campaigns/sipzy_male_lifestyle_campaign.png"
+                            alt="SIPZY male lifestyle campaign">
+                    </div>
+                </div>
+                <div class="stagger reveal-right">
+                    <div class="image-frame">
+                        <img class="img"
+                            src="graphic design projects/SIPZY/10_lifestyle_campaigns/sipzy_female_lifestyle_campaign.png"
+                            alt="SIPZY female lifestyle campaign">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 14 WALL POSTER CAMPAIGN -->
+        <section class="section">
+            <div class="section-header reveal">
+                <span class="label">09 Physical</span>
+                <h2>Street-Level Campaign Energy</h2>
+                <p class="lead">Poster campaigns give SIPZY a raw cultural presence, translating the polished packaging identity into a bold physical statement.</p>
+            </div>
+
+            <div class="medium-showcase reveal-scale">
+                <div class="image-frame">
+                    <img class="img"
+                        src="graphic design projects/SIPZY/11_poster_campaigns/sipzy_wall_poster_campaign.png"
+                        alt="SIPZY wall poster campaign">
+                </div>
+            </div>
+        </section>
+
+        <!-- 15 FINAL SHOWCASE DIVIDER -->
+        <section class="divider divider-parallax reveal-scale">
+            <img src="graphic design projects/SIPZY/13_case_study_assets/section_dividers/ChatGPT Image May 11, 2026, 07_11_31 PM.png"
+                alt="SIPZY final showcase divider">
+            <div class="divider-copy">
+                <h2>The Complete Cinematic Case Study</h2>
+            </div>
+        </section>
+
+        <!-- 16 FINAL BRAND COLLAGE -->
+        <section class="section">
+            <div class="section-header reveal">
+                <span class="label">10 Final</span>
+                <h2>A Cohesive Beverage Experience</h2>
+                <p class="lead">The master collage synthesizes packaging, flavor worlds, outdoor visuals, and lifestyle storytelling into a single, unified brand expression.</p>
+            </div>
+
+            <div class="image-frame reveal-scale">
+                <img class="img" src="graphic design projects/SIPZY/12_brand_collages/sipzy_master_brand_collage.png"
+                    alt="SIPZY master brand collage final showcase">
+            </div>
+
+            <div class="final-copy reveal">
+                <p>SIPZY evolved from a simple concept into a full-scale commercial case study—demonstrating how visual hierarchy, lighting, and narrative can elevate product design.</p>
+            </div>
+        </section>
+
+        <!-- NEXT PROJECT NAVIGATION -->
+        <section class="section next-project-section reveal" style="text-align: center; margin-top: 10rem; padding-bottom: 6rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6rem;">
+            <span class="label">Next Project</span>
+            <a href="bitezy.html" class="next-project-link" style="display: block; text-decoration: none; margin-top: 2rem; position: relative; overflow: hidden; border-radius: 12px; max-width: 800px; margin-left: auto; margin-right: auto; background: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2)); z-index: 1;"></div>
+                <img src="graphic design projects/BITEZY/11_CASE_STUDY_LAYOUT/HERO/bitezy_final_portfolio_collage_v01.png" alt="BITEZY" style="width: 100%; height: 300px; object-fit: cover; opacity: 0.6; transition: opacity 0.5s, transform 0.5s; display: block;" class="next-img">
+                <div style="position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <h2 style="font-size: clamp(2rem, 5vw, 4rem); color: #ffffff; margin: 0; font-family: Outfit, Inter, sans-serif; font-weight: 900; letter-spacing: -0.02em;">02 — BITEZY</h2>
+                    <span style="color: #fff; font-size: 0.8rem; letter-spacing: 0.2em; margin-top: 1rem; font-weight: 700; text-transform: uppercase;">View Case Study</span>
+                </div>
+            </a>
+            <div style="margin-top: 4rem;">
+                <a href="index.html#work" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.2em; font-weight: 700; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">BACK TO PORTFOLIO</a>
+            </div>
+            <style>
+                .next-project-link:hover .next-img { opacity: 0.9 !important; transform: scale(1.05) !important; }
+                @media (max-width: 768px) {
+                    .next-project-link .next-img { height: 200px !important; }
+                    .next-project-link h2 { font-size: 1.8rem !important; }
+                }
+            </style>
+        </section>
+
+    </main>
+
+    <script>
+        // ── Scroll Reveal Observer (all animation types) ──
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: "0px 0px -60px 0px"
+        });
+
+        document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale").forEach((el) => {
+            revealObserver.observe(el);
+        });
+
+        // ── Parallax effect on divider images ──
+        const parallaxDividers = document.querySelectorAll(".divider-parallax img");
+
+        function handleParallax() {
+            parallaxDividers.forEach((img) => {
+                const rect = img.parentElement.getBoundingClientRect();
+                const windowH = window.innerHeight;
+                if (rect.top < windowH && rect.bottom > 0) {
+                    const progress = (windowH - rect.top) / (windowH + rect.height);
+                    const offset = (progress - 0.5) * 40;
+                    img.style.transform = `translateY(${offset}px) scale(1.04)`;
+                }
+            });
+        }
+
+        window.addEventListener("scroll", handleParallax, { passive: true });
+        handleParallax();
+    </script>
+</body>
+
+</html>

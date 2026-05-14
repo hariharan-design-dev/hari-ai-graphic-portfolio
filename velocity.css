@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;900&display=swap');
+
+:root {
+    --vel-bg: #0a0a0a;
+    --vel-charcoal: #141414;
+    --vel-graphite: #1a1a1a;
+    --vel-dirty-white: #e8e4df;
+    --vel-red: #e63322;
+    --vel-acid: #c8ff00;
+    --vel-text: #f0ece6;
+    --vel-text-dim: #a0a0a0; /* Increased from #7a7672 for better legibility */
+    --vel-section-gap: 200px; /* Reduced slightly for tighter but balanced rhythm */
+    --vel-pad: 3%; /* Further reduced to 3% to remove the "too much padding" look */
+}
+
+body {
+    background: var(--vel-bg);
+    color: var(--vel-text);
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+    margin: 0;
+    text-rendering: optimizeLegibility;
+}
+
+/* ── NAV ── */
+nav {
+    background: rgba(10,10,10,0.9) !important;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 1.5rem 0;
+}
+.logo {
+    font-family: 'Outfit', sans-serif; /* Switched to Outfit for consistency */
+    font-weight: 900;
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+    color: #fff !important;
+}
+
+/* ── TYPOGRAPHY ── */
+h1,h2,h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: 0.04em;
+}
+.vel-hero-title {
+    font-size: clamp(5.5rem, 16vw, 14rem); /* Slightly reduced for better breathing space */
+    color: #fff;
+    margin: 0;
+    line-height: 0.85;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 80px rgba(0,0,0,0.3); /* Multi-layered shadow for visibility */
+    letter-spacing: -0.02em;
+}
+.vel-h2 {
+    font-size: clamp(3rem, 8vw, 6rem); /* Refined size */
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+.vel-h3 {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    letter-spacing: 0.06em;
+    margin-bottom: 1.2rem;
+    color: var(--vel-dirty-white);
+}
+.vel-label {
+    font-family: 'Outfit', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.6em;
+    color: var(--vel-red);
+    margin-bottom: 1.5rem;
+    display: block;
+    font-weight: 800;
+}
+.vel-body {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: var(--vel-text-dim);
+    max-width: 550px;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+}
+.vel-body-lg {
+    font-size: 1.5rem;
+    line-height: 1.55;
+    color: var(--vel-dirty-white);
+    max-width: 850px;
+    margin-bottom: 3.5rem;
+    font-weight: 300;
+}
+.vel-tagline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    color: var(--vel-red);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* ── LAYOUT ── */
+.vel-section {
+    width: 100%;
+    margin-top: var(--vel-section-gap);
+    padding: 0 var(--vel-pad);
+    position: relative;
+}
+.vel-full {
+    width: 100%;
+    height: 100vh; /* Reverted to 100vh for full cinematic impact */
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+.vel-full img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%; /* Higher position to keep apparel/models in focus */
+    opacity: 1; /* Full opacity for maximum visual impact */
+    filter: contrast(1.05) brightness(0.9); /* Subtle boost to "aggressive" energy */
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.vel-full:hover img {
+    transform: scale(1.03); /* Subtle breathing effect */
+}
+.vel-hero-overlay {
+    position: absolute;
+    inset: 0;
+    /* More targeted gradient to protect text without muddying the whole image */
+    background: linear-gradient(180deg, 
+        rgba(0,0,0,0.4) 0%, 
+        transparent 30%, 
+        transparent 60%, 
+        rgba(10,10,10,0.9) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 1.5rem; /* Reduced compression between label, title, and body */
+    padding: var(--vel-pad);
+    padding-bottom: 7%;
+}
+.vel-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: var(--vel-charcoal);
+    border-radius: 2px;
+    /* Removed object-fit and max-height to prevent letterboxing/padding look */
+}
+.vel-img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.vel-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px; /* Reduced from 120px for tighter visual cohesion */
+    align-items: center;
+}
+.vel-grid-asym {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px; /* Reduced from 80px */
+    align-items: start;
+}
+.vel-grid-asym-r {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    gap: 80px;
+    align-items: start;
+}
+.vel-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+.vel-grid-editorial {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: end;
+}
+.vel-strip {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    scrollbar-width: none;
+}
+.vel-strip::-webkit-scrollbar { display: none; }
+.vel-strip-item {
+    flex: 0 0 auto;
+    width: 320px;
+}
+.vel-strip-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.vel-pause {
+    height: 35vh;
+}
+.vel-pause-sm {
+    height: 15vh;
+}
+
+/* ── RED GLOW ── */
+.vel-glow {
+    position: absolute;
+    width: 35vw;
+    height: 35vw;
+    background: radial-gradient(circle, rgba(230,51,34,0.1) 0%, transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ── DIVIDER ── */
+.vel-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--vel-red);
+    margin: 3rem 0;
+}
+
+/* ── TEXTURE OVERLAY ── */
+.vel-texture {
+    position: relative;
+}
+.vel-texture::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+}
+
+/* ── PROJECT META BAR ── */
+.vel-meta-bar {
+    display: flex;
+    gap: 4rem;
+    padding: 3rem 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-top: 4rem;
+}
+.vel-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+.vel-meta-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    color: var(--vel-text-dim);
+    font-weight: 700;
+}
+.vel-meta-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+    color: var(--vel-dirty-white);
+}
+
+/* ── SOCIAL GRID ── */
+.vel-social-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+/* ── ANIMATIONS ── */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+    .vel-grid-2, .vel-grid-asym, .vel-grid-asym-r, .vel-grid-3,
+    .vel-grid-editorial, .vel-social-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    :root { --vel-section-gap: 150px; }
+    .vel-meta-bar { flex-wrap: wrap; gap: 2rem; }
+}
+@media (max-width: 768px) {
+    .vel-hero-title { font-size: 4.5rem; }
+    .vel-h2 { font-size: 3rem; }
+    .vel-strip-item { width: 260px; }
+    :root { --vel-pad: 5%; }
+}

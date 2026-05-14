@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PACKGEN | AI-Powered Packaging Intelligence Ecosystem</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --packgen-bg: #050505;
+            --packgen-charcoal: #0a0a0a;
+            --packgen-graphite: #151515;
+            --packgen-accent: #8b5cf6; /* Neon Purple */
+            --packgen-text: #f0f0f0;
+            --packgen-text-dim: #b0b0b0; /* Increased from #888888 for better visibility */
+            --section-margin: 180px;
+            --container-padding: 8%;
+        }
+
+        body {
+            background-color: var(--packgen-bg);
+            color: var(--packgen-text);
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            letter-spacing: -0.01em;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Typography System */
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            font-weight: 900;
+            line-height: 0.85;
+            letter-spacing: -0.05em;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .cinematic-hero-h1 {
+            font-size: clamp(5rem, 15vw, 12rem);
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        .editorial-h2 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        .editorial-h3 {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            text-transform: none;
+        }
+
+        .label-accent {
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5em;
+            color: var(--packgen-accent);
+            margin-bottom: 2rem;
+            display: block;
+            font-weight: 800;
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .body-editorial {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--packgen-text-dim);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+
+        .body-large {
+            font-size: 1.5rem;
+            line-height: 1.5;
+            color: #fff;
+            max-width: 800px;
+            margin-bottom: 4rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        /* Layout Rules */
+        .section-wrap {
+            width: 100%;
+            margin-top: var(--section-margin);
+            padding: 0 var(--container-padding);
+            position: relative;
+        }
+
+        .full-screen-visual {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .full-screen-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .img-reveal {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 2px;
+            background: var(--packgen-charcoal);
+        }
+
+        .editorial-composition {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .asymmetric-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .visual-pause {
+            height: 40vh;
+        }
+
+        /* Navigation Override */
+        nav {
+            background: rgba(5, 5, 5, 0.8) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 1.2rem;
+            letter-spacing: -0.02em;
+            color: #fff !important;
+        }
+
+        /* Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Section Specifics */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.95) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: var(--container-padding);
+        }
+
+        .purple-glow {
+            position: absolute;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .editorial-composition, .asymmetric-layout { grid-template-columns: 1fr; gap: 60px; }
+            :root { --section-margin: 160px; }
+        }
+
+        @media (max-width: 768px) {
+            .cinematic-hero-h1 { font-size: 4rem; }
+            .editorial-h2 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Hari Haran.</a>
+            <div class="nav-links">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#work">Work</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="https://updated-ui-ux-portfolio.vercel.app/" target="_blank">UI/UX Portfolio</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 01 — CINEMATIC INTRO -->
+    <header class="full-screen-visual" id="top">
+        <img src="graphic design projects/packgen/11_CASE_STUDY_LAYOUT/HERO/packgen_case_study_master_hero_v01.png" alt="Packgen Master Hero">
+        <div class="hero-overlay">
+            <div class="reveal">
+                <span class="label-accent">Intelligent Infrastructure</span>
+                <h1 class="cinematic-hero-h1">PACKGEN</h1>
+                <p class="body-large">A next-generation packaging intelligence ecosystem, redefining the intersection of AI design automation and commercial brand scalability.</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="visual-pause"></div>
+
+    <!-- SECTION 02 — CREATIVE DIRECTION -->
+    <section class="section-wrap">
+        <div class="purple-glow" style="top: -10%; right: -10%;"></div>
+        <div class="reveal" style="margin-bottom: 120px; text-align: center;">
+            <span class="label-accent">01 Foundation</span>
+            <h2 class="editorial-h2">Future Design<br>Ecosystem</h2>
+            <p class="body-editorial" style="margin-left: auto; margin-right: auto;">Building a visual language for a world where AI doesn't just assist, but architecturally drives creative decision-making.</p>
+        </div>
+        
+        <img src="graphic design projects/packgen/00_CREATIVE_DIRECTION/HERO/packgen_future_creative_ecosystem_hero_v01.png" class="img-reveal reveal" alt="Design Ecosystem">
+        
+        <div class="editorial-composition reveal" style="margin-top: 120px;">
+            <div>
+                <img src="graphic design projects/packgen/00_CREATIVE_DIRECTION/SUPPORT/packgen_ai_visual_language_direction_v01.png" class="img-reveal" alt="Visual Language">
+            </div>
+            <div style="padding-top: 80px;">
+                <h3 class="editorial-h3">Intelligent Material Thinking</h3>
+                <p class="body-editorial">Every texture and surface is simulated through advanced design intelligence, ensuring commercial realism at every touchpoint.</p>
+                <img src="graphic design projects/packgen/00_CREATIVE_DIRECTION/SUPPORT/packgen_futuristic_material_moodboard_v01.png" class="img-reveal" style="width: 70%;" alt="Moodboard">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 03 — BRAND SYSTEM -->
+    <section class="section-wrap">
+        <div class="reveal" style="text-align: center; margin-bottom: 120px;">
+            <span class="label-accent">02 Identity</span>
+            <h2 class="editorial-h2">The Core System</h2>
+            <p class="body-editorial" style="margin-left: auto; margin-right: auto;">Modular, scalable, and built for a technology-first commercial environment.</p>
+        </div>
+
+        <img src="graphic design projects/packgen/01_BRAND_SYSTEM/HERO/packgen_brand_identity_system_hero_v01.png" class="img-reveal reveal" alt="Identity System">
+
+        <div class="asymmetric-layout reveal" style="margin-top: 120px;">
+            <div style="background: var(--packgen-charcoal); padding: 100px; display: flex; align-items: center; justify-content: center;">
+                <img src="graphic design projects/packgen/01_BRAND_SYSTEM/SUPPORT/packgen_primary_logo_system_v01.png" style="max-width: 60%;" alt="Primary Mark">
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+                <span class="label-accent">Typography</span>
+                <h3 class="editorial-h3">Editorial Precision</h3>
+                <p class="body-editorial">A custom-tuned typography system designed for high-end technical legibility.</p>
+                <img src="graphic design projects/packgen/01_BRAND_SYSTEM/SUPPORT/packgen_typography_editorial_direction_v01.png" class="img-reveal" alt="Typography System">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 04 — AI DESIGN INTELLIGENCE -->
+    <section class="section-wrap">
+        <div class="purple-glow" style="bottom: -10%; left: -10%;"></div>
+        <div class="reveal" style="text-align: center;">
+            <span class="label-accent">03 Engine</span>
+            <h2 class="editorial-h2">Design Intelligence</h2>
+            <p class="body-large" style="margin-left: auto; margin-right: auto;">The PACKGEN engine utilizes proprietary generation frameworks to transform conceptual prompts into production-ready packaging assets.</p>
+        </div>
+
+        <div style="margin-top: 100px;">
+            <img src="graphic design projects/packgen/02_AI_ENGINE_VISUALS/HERO/packgen_ai_generation_engine_scene_v01.png" class="img-reveal reveal" alt="AI Engine">
+        </div>
+
+        <div class="editorial-composition reveal" style="margin-top: 120px;">
+            <div style="padding: 60px;">
+                <h3 class="editorial-h3">Holographic Workflow</h3>
+                <p class="body-editorial">Visualizing the invisible data streams that power real-time design iteration.</p>
+                <img src="graphic design projects/packgen/02_AI_ENGINE_VISUALS/SUPPORT/packgen_holographic_ai_workflow_v01.png" class="img-reveal" alt="Holographic Workflow">
+            </div>
+            <div>
+                <img src="graphic design projects/packgen/02_AI_ENGINE_VISUALS/SUPPORT/packgen_intelligent_packaging_generation_v01.png" class="img-reveal" alt="Intelligent Generation">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 05 — UI ECOSYSTEM -->
+    <section class="section-wrap">
+        <div class="reveal" style="text-align: center;">
+            <span class="label-accent">04 Interface</span>
+            <h2 class="editorial-h2">The Dashboard</h2>
+            <p class="body-editorial" style="margin-left: auto; margin-right: auto;">A controlled, minimal workspace for high-speed creative direction.</p>
+        </div>
+
+        <img src="graphic design projects/packgen/03_UI_ECOSYSTEM/HERO/packgen_dashboard_ecosystem_hero_v01.png" class="img-reveal reveal" style="margin-top: 60px;" alt="Dashboard">
+
+        <div class="editorial-composition reveal" style="margin-top: 120px;">
+            <div>
+                <img src="graphic design projects/packgen/03_UI_ECOSYSTEM/SUPPORT/packgen_packaging_editor_interface_v01.png" class="img-reveal" alt="Editor Interface">
+            </div>
+            <div style="padding-top: 100px;">
+                <h3 class="editorial-h3">Live Generation</h3>
+                <p class="body-editorial">Instant visual feedback loops integrated directly into the brand workspace.</p>
+                <img src="graphic design projects/packgen/03_UI_ECOSYSTEM/SUPPORT/packgen_live_preview_generation_panel_v01.png" class="img-reveal" alt="Live Preview">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 06 — GENERATION WORKFLOW -->
+    <section class="section-wrap">
+        <div class="reveal" style="text-align: center; margin-bottom: 120px;">
+            <span class="label-accent">05 Process</span>
+            <h2 class="editorial-h2">Modular Pipelines</h2>
+            <p class="body-editorial" style="margin: 0 auto;">Streamlining the path from ideation to commercial output.</p>
+        </div>
+
+        <img src="graphic design projects/packgen/04_GENERATION_WORKFLOWS/HERO/packgen_ai_workflow_storytelling_scene_v01.png" class="img-reveal reveal" alt="Workflow Scene">
+
+        <div class="asymmetric-layout reveal" style="margin-top: 120px;">
+            <div>
+                <img src="graphic design projects/packgen/04_GENERATION_WORKFLOWS/SUPPORT/packgen_design_pipeline_system_v01.png" class="img-reveal" alt="Pipeline System">
+            </div>
+            <div style="padding: 40px; display: flex; flex-direction: column; justify-content: flex-end;">
+                <h3 class="editorial-h3">Real-time Transformation</h3>
+                <p class="body-editorial">Adaptive design systems that evolve with the product lifecycle.</p>
+                <img src="graphic design projects/packgen/04_GENERATION_WORKFLOWS/SUPPORT/packgen_real_time_packaging_transformation_v01.png" class="img-reveal" alt="Transformation">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 07 — PACKAGING VISUALIZATION -->
+    <section class="section-wrap">
+        <div class="reveal" style="text-align: center;">
+            <span class="label-accent">06 Output</span>
+            <h2 class="editorial-h2">Packaging Visualization</h2>
+            <p class="body-large" style="margin-left: auto; margin-right: auto;">Hyper-realistic renderings that bridge the gap between AI generation and physical product existence.</p>
+        </div>
+
+        <img src="graphic design projects/packgen/05_PACKAGING_VISUALIZATION/HERO/packgen_packaging_visualization_hero_v01.png" class="img-reveal reveal" style="margin-top: 80px;" alt="Packaging Hero">
+
+        <div class="editorial-composition reveal" style="margin-top: 120px;">
+            <div style="padding-top: 60px;">
+                <h3 class="editorial-h3">Multi-Format Systems</h3>
+                <p class="body-editorial">Consistent brand application across diverse physical dimensions.</p>
+                <img src="graphic design projects/packgen/05_PACKAGING_VISUALIZATION/SUPPORT/packgen_multi_product_packaging_system_v01.png" class="img-reveal" alt="Multi Format">
+            </div>
+            <div>
+                <img src="graphic design projects/packgen/05_PACKAGING_VISUALIZATION/SUPPORT/packgen_premium_packaging_render_v01.png" class="img-reveal" alt="Premium Render">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 08 — MATERIAL SYSTEM -->
+    <section class="section-wrap">
+        <div class="purple-glow" style="top: 20%; right: -5%;"></div>
+        <div class="reveal" style="text-align: center; margin-bottom: 100px;">
+            <span class="label-accent">07 Tactility</span>
+            <h2 class="editorial-h2">Material Realism</h2>
+            <p class="body-editorial" style="margin-left: auto; margin-right: auto;">Sophisticated material simulation focusing on tactile quality and industrial precision.</p>
+        </div>
+
+        <img src="graphic design projects/packgen/06_MATERIAL_SIMULATION/HERO/packgen_material_realism_macro_scene_v01.png" class="img-reveal reveal" style="margin-top: 60px;" alt="Material Hero">
+
+        <div class="editorial-composition reveal" style="margin-top: 120px;">
+            <div>
+                <img src="graphic design projects/packgen/06_MATERIAL_SIMULATION/SUPPORT/packgen_gloss_matte_texture_closeup_v01.png" class="img-reveal" alt="Texture Closeup">
+            </div>
+            <div style="padding-top: 120px;">
+                <h3 class="editorial-h3">Embossed Language</h3>
+                <p class="body-editorial">Micro-level detail control for premium physical production simulation.</p>
+                <img src="graphic design projects/packgen/06_MATERIAL_SIMULATION/SUPPORT/packgen_embossed_packaging_surface_v01.png" class="img-reveal" alt="Embossed Surface">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 09 — CAMPAIGN SYSTEM -->
+    <section class="section-wrap">
+        <div class="reveal" style="text-align: center;">
+            <span class="label-accent">08 Commercial</span>
+            <h2 class="editorial-h2">Campaign Ecosystem</h2>
+            <p class="body-large" style="margin-left: auto; margin-right: auto;">Transforming design intelligence into high-impact commercial narratives.</p>
+        </div>
+
+        <img src="graphic design projects/packgen/07_CAMPAIGN_SYSTEM/HERO/packgen_futuristic_campaign_billboard_v01.png" class="img-reveal reveal" style="margin-top: 80px;" alt="Campaign Hero">
+
+        <div class="asymmetric-layout reveal" style="margin-top: 120px;">
+            <div style="padding: 40px;">
+                <h3 class="editorial-h3">Product Launch System</h3>
+                <p class="body-editorial">Integrated launch frameworks designed for the futuristic retail landscape.</p>
+                <img src="graphic design projects/packgen/07_CAMPAIGN_SYSTEM/SUPPORT/packgen_product_launch_poster_v01.png" class="img-reveal" alt="Launch Poster">
+            </div>
+            <div>
+                <img src="graphic design projects/packgen/07_CAMPAIGN_SYSTEM/SUPPORT/packgen_social_campaign_visual_v01.png" class="img-reveal" alt="Social Campaign">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10 — COMMERCIAL ECOSYSTEM -->
+    <section class="section-wrap">
+        <div class="reveal" style="text-align: center;">
+            <span class="label-accent">09 Reality</span>
+            <h2 class="editorial-h2">Commercial Scalability</h2>
+            <p class="body-editorial" style="margin: 0 auto;">Proving the system's effectiveness in real-world retail environments.</p>
+        </div>
+
+        <img src="graphic design projects/packgen/08_COMMERCIAL_APPLICATIONS/HERO/packgen_retail_packaging_ecosystem_v01.png" class="img-reveal reveal" style="margin-top: 100px;" alt="Retail Ecosystem">
+
+        <div class="editorial-composition reveal" style="margin-top: 120px;">
+            <div>
+                <img src="graphic design projects/packgen/08_COMMERCIAL_APPLICATIONS/SUPPORT/packgen_premium_shelf_display_v01.png" class="img-reveal" alt="Shelf Display">
+            </div>
+            <div style="padding-top: 60px;">
+                <h3 class="editorial-h3">Production Lineup</h3>
+                <p class="body-editorial">A diverse array of packaging formats unified under a single intelligent system.</p>
+                <img src="graphic design projects/packgen/08_COMMERCIAL_APPLICATIONS/SUPPORT/packgen_commercial_packaging_lineup_v01.png" class="img-reveal" alt="Lineup">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 11 — CREATIVE ENVIRONMENTS -->
+    <section class="section-wrap">
+        <div class="purple-glow" style="bottom: 0; left: 20%;"></div>
+        <div class="reveal" style="text-align: center;">
+            <span class="label-accent">10 Human + AI</span>
+            <h2 class="editorial-h2">Creative Environments</h2>
+            <p class="body-large" style="margin-left: auto; margin-right: auto;">The future of the design studio, where human creativity and artificial intelligence collaborate in a seamless loop.</p>
+        </div>
+
+        <img src="graphic design projects/packgen/09_CREATIVE_ENVIRONMENTS/HERO/packgen_futuristic_design_studio_scene_v01.png" class="img-reveal reveal" style="margin-top: 80px;" alt="Studio Hero">
+
+        <div class="editorial-composition reveal" style="margin-top: 120px;">
+            <div style="padding: 60px;">
+                <h3 class="editorial-h3">Assisted Workspaces</h3>
+                <p class="body-editorial">Intelligent tools that anticipate the designer's intent.</p>
+                <img src="graphic design projects/packgen/09_CREATIVE_ENVIRONMENTS/SUPPORT/packgen_ai_assisted_creative_workspace_v01.png" class="img-reveal" alt="AI Workspace">
+            </div>
+            <div>
+                <img src="graphic design projects/packgen/09_CREATIVE_ENVIRONMENTS/SUPPORT/packgen_designer_interaction_environment_v01.png" class="img-reveal" alt="Designer Interaction">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 12 — FINAL ECOSYSTEM REVEAL -->
+    <section class="section-wrap" style="padding-bottom: 200px;">
+        <div class="reveal" style="text-align: center; margin-bottom: 120px;">
+            <span class="label-accent">11 Culmination</span>
+            <h2 class="editorial-h2">The Unified Ecosystem</h2>
+            <p class="body-editorial" style="margin: 0 auto;">A complete integration of intelligence, branding, and commercial reality.</p>
+        </div>
+
+        <img src="graphic design projects/packgen/10_FINAL_SHOWCASE/HERO/packgen_complete_ecosystem_reveal_v01.png" class="img-reveal reveal" alt="Complete Reveal">
+
+        <div class="editorial-composition reveal" style="margin-top: 120px;">
+            <div>
+                <img src="graphic design projects/packgen/10_FINAL_SHOWCASE/SUPPORT/packgen_cinematic_ecosystem_collage_v01.png" class="img-reveal" alt="Collage">
+            </div>
+            <div style="padding-top: 100px;">
+                <img src="graphic design projects/packgen/10_FINAL_SHOWCASE/SUPPORT/packgen_editorial_final_composition_v01.png" class="img-reveal" alt="Final Composition">
+            </div>
+        </div>
+
+        <div class="reveal" style="text-align: center; margin-top: 200px;">
+            <h2 class="cinematic-hero-h1" style="font-size: clamp(3rem, 10vw, 8rem);">PACKGEN.AI</h2>
+            <p class="label-accent">The Future of Packaging is Here.</p>
+        </div>
+    </section>
+
+    <!-- NEXT PROJECT NAVIGATION -->
+    <section class="section-wrap next-project-section reveal" style="text-align: center; margin-top: 10rem; padding-bottom: 6rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6rem;">
+        <span class="label-accent">Next Project</span>
+        <a href="sipzy.html" class="next-project-link" style="display: block; text-decoration: none; margin-top: 2rem; position: relative; overflow: hidden; border-radius: 12px; max-width: 800px; margin-left: auto; margin-right: auto; background: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+            <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2)); z-index: 1;"></div>
+            <img src="graphic design projects/SIPZY/12_brand_collages/sipzy_master_brand_collage.png" alt="SIPZY" style="width: 100%; height: 300px; object-fit: cover; opacity: 0.6; transition: opacity 0.5s, transform 0.5s; display: block;" class="next-img">
+            <div style="position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <h2 style="font-size: clamp(2rem, 5vw, 4rem); color: #ffffff; margin: 0; font-family: 'Outfit', sans-serif; font-weight: 900; letter-spacing: -0.02em;">01 — SIPZY</h2>
+                <span style="color: #fff; font-size: 0.8rem; letter-spacing: 0.2em; margin-top: 1rem; font-weight: 700; text-transform: uppercase;">View Case Study</span>
+            </div>
+        </a>
+        <div style="margin-top: 4rem;">
+            <a href="index.html#work" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.2em; font-weight: 700; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">BACK TO PORTFOLIO</a>
+        </div>
+        <style>
+            .next-project-link:hover .next-img { opacity: 0.9 !important; transform: scale(1.05) !important; }
+            @media (max-width: 768px) {
+                .next-project-link .next-img { height: 200px !important; }
+                .next-project-link h2 { font-size: 1.8rem !important; }
+            }
+        </style>
+    </section>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
